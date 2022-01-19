@@ -30,7 +30,7 @@ function App() {
       <main>
         <Container>
           <Container>
-            <Row>
+            <Row className='shadow-sm banner'>
               <Col lg={4} >
                 <img src={Banner} alt="Banner de Igreja" className='banner-img' />
               </Col>
