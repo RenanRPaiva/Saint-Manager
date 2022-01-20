@@ -5,6 +5,7 @@ import Jovem from "../../assets/img/Jovens.png";
 import Irmas from "../../assets/img/Chá.jfif";
 import Criança from "../../assets/img/Crianças.jfif";
 import OutrosEventos from "../../assets/img/Eventos.jfif"; 
+import { Link } from "react-router-dom";
 
 export function HomeView() {
     return (
@@ -32,7 +33,7 @@ export function HomeView() {
                     <Card.Text className='card-remove'>
                       1° Culto Jovem do ano! Seu presença é essencial, não esqueça da mascara!
                     </Card.Text>
-                    <Button className='btn-inscrever mb-3'>Inscreva-se!</Button>
+                    <Button as={ Link } to='eventoInscrição' className='btn-inscrever mb-3'>Inscreva-se!</Button>
                   </Card.Body>
                 </Card>
               </div>
@@ -65,7 +66,7 @@ export function HomeView() {
                   <Card.Img variant="top" src={OutrosEventos} alt='Outros Eventos' width={'306px'} height={'139px'} />
                   <Card.Body>
                     <Card.Title>Encontre Outros Eventos</Card.Title>
-                    <Button className='btn-inscrever mb-3'>Veja Mais!</Button>
+                    <Button as={ Link } to='/eventos' className='btn-inscrever mb-3'>Veja Mais!</Button>
                   </Card.Body>
                 </Card>
               </div>
