@@ -73,3 +73,21 @@ background-color: #FFA451 !important;
         display: none;
     }
 }
+
+/*FOOTER*/
+.footer{
+    background-color: #FFA451;
+    color: #FFF;
+    margin-top: 20px;
+    padding: 5px 0;
+}
+html, body, #root{
+    height: 100%;
+}
+#root{
+    display: flex;
+    flex-direction: column;
+}
+#root > main{
+    flex: 1;
+}
