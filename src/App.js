@@ -6,28 +6,52 @@ import Irmas from './assets/img/Chá.jfif'
 import Criança from './assets/img/Crianças.jfif'
 import OutrosEventos from './assets/img/Eventos.jfif'
 
-function App() {
+function Header() {
+  return (
+    <header>
+      <Navbar expand="md" className='main-navbar'>
+        <Container>
+          <Navbar.Brand href="/">
+            <Button variant="link" href="/" className='main-navbar border-0'  > <img src={Logo} alt="Logo Saint Manager" width={46.58} height={46.58} />
+            </Button>
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ms-auto">
+              <Nav.Link href="/" className='btn-remove'>Home</Nav.Link>
+              <Nav.Link href="/eventos" className='btn-remove'>Eventos</Nav.Link>
+              <Nav.Link href="/login">Entrar</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </header>
+  )
+}
+
+function Footer() {
+  return (
+    <footer className='text-center footer'>
+      <p className='m-0'>Todos os direitos reservados ao Saint Manager!</p>
+    </footer>
+  )
+}
+
+function Layout ({ children }){
   return (
     <>
-      <header>
-        <Navbar expand="md" className='main-navbar'>
-          <Container>
-            <Navbar.Brand href="/">
-              <Button variant="link" href="/" className='main-navbar border-0'  > <img src={Logo} alt="Logo Saint Manager" width={46.58} height={46.58} />
-              </Button>
-            </Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="ms-auto">
-                <Nav.Link href="/" className='btn-remove'>Home</Nav.Link>
-                <Nav.Link href="/eventos" className='btn-remove'>Eventos</Nav.Link>
-                <Nav.Link href="/login">Entrar</Nav.Link>
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar>
-      </header>
-      <main>
+    <Header />
+    <main>
+      {children}
+    </main>
+    <Footer />
+    </>    
+  )
+}
+
+function HomeView() {
+  return (
+    <Layout>  
         <Container>
           <Container>
             <Row className='shadow banner rounded'>
@@ -89,12 +113,21 @@ function App() {
               </Card>
             </div>
           </div>
-        </Container>
-      </main>
-      <footer className='text-center footer'>
-        <p className='m-0'>Todos os direitos reservados ao Saint Manager!</p>
-      </footer>
-    </>
+        </Container>        
+    </ Layout>
+  )
+}
+
+function NotFoundView (){
+  return(
+    <Layout>   
+    <h1>Página não encontrada!</h1>      
+    </ Layout>
+  )
+}
+function App() {
+  return (
+    <HomeView />
   );
 }
 
