@@ -1,7 +1,7 @@
 import { Navbar, Container, Button, Nav } from "react-bootstrap"
 import Logo from '../../assets/img/Logo-saint-manager.png'
 import { Link } from "react-router-dom"
-import { evento } from '../../views/Eventos'
+
 
 export function Header() {
     return (
