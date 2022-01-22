@@ -73,7 +73,17 @@ background-color: #FFA451 !important;
         display: none;
     }
 }
-
+/* EVENTOS - GRID CARD */
+.grid-eventos-item .card-evento {
+    height: 100%;
+}
+.grid-eventos-item .card-evento .card-body{
+    display: flex;
+    flex-direction: column;    
+}
+.grid-eventos-item .card-evento .btn{
+    margin-top: auto;
+}
 /*FOOTER*/
 .footer{
     background-color: #FFA451;

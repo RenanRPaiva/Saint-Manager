@@ -2,7 +2,6 @@ import { Navbar, Container, Button, Nav } from "react-bootstrap"
 import Logo from '../../assets/img/Logo-saint-manager.png'
 import { Link } from "react-router-dom"
 
-
 export function Header() {
     return (
         <header>

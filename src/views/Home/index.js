@@ -7,6 +7,8 @@ import Criança from "../../assets/img/Crianças.jfif";
 import OutrosEventos from "../../assets/img/Eventos.jfif"; 
 import { Link } from "react-router-dom";
 
+
+
 export function HomeView() {
     return (
       <Layout>  
