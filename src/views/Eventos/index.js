@@ -54,8 +54,8 @@ export function EventoView() {
             <Container>
                 <h1 className="text-center mt-4">Eventos</h1>
                 <Row>
-                    {eventos.map((evento) => (
-                        <Col className="grid-eventos-item mb-3" xs={6} md={4} lg={3}>
+                    {eventos.map((evento, index) => (
+                        <Col key={index} className="grid-eventos-item mb-3" xs={6} md={4} lg={3}>
                             <CardEvento evento={evento} />
                         </Col>
                     ))}
