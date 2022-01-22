@@ -37,7 +37,7 @@ export function HomeView() {
         <Container>
           <Row className='shadow banner rounded'>
             <Col lg={4} className='rounded-left banner-img-col' >
-              <img src={Banner} alt="Banner de Igreja" className='banner-img rounded-left' />
+              <img src={Banner} alt="Banner de Igreja" className='banner-img rounded' />
             </Col>
             <Col lg={8} className="p-10 banner-text">
               <h1 className='text-sm-start'>Venha  conhecer o Saint Manager!</h1>
@@ -51,7 +51,7 @@ export function HomeView() {
           <CardEventoHome evento={eventosHome} />
           <Col className="grid-eventos-item mb-3" xs={6} md={4} lg={3}>
             <Card as='article' className="text-center shadow card-evento">
-              <Card.Img variant="top" src={OutrosEventos} alt='Outros Eventos' width={'306px'} height={'139px'} />
+              <Card.Img variant="top" src={OutrosEventos} alt='Outros Eventos' width={'306px'} height={'139px'} className="rounded"/>
               <Card.Body>
                 <Card.Title>Encontre Outros Eventos</Card.Title>
                 <Button as={Link} to='/eventos' className='btn-inscrever mb-3'>Veja Mais!</Button>
