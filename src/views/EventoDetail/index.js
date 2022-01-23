@@ -16,12 +16,13 @@ const evento = {
     time: '19:00',
     local: 'Templo Principal',
     inscriptions: [
-        {id: 1,
-        name:'Renan Paiva',
-        email: 'renan17paiva@gmail.com',
+        {
+            id: 1,
+            name: 'Renan Paiva',
+            email: 'renan17paiva@gmail.com',
         },
         {
-            id:2,
+            id: 2,
             name: 'João Silva',
             email: 'joaosilva@exeemplo.com',
         }
