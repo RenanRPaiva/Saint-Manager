@@ -1,21 +1,10 @@
 import { Col, Row } from "react-bootstrap";
-import Jovem from "../../assets/img/Jovens.png";
-
-const evento = {
-    id: 1,
-    name: 'Culto Jovem',
-    image: Jovem,
-    shortDescription: '1° Culto Jovem do ano! Seu presença é essencial, não esqueça da mascara!',
-    depart: 'Jovem',
-    coord: 'John e Anna',
-    team: 'Ellen, Cleber, João e José',
-    date: '01/05/22',
-    time: '19:00',
-    local: 'Templo Principal',
-}
 
 
-export function CardEventoDetail () {
+
+
+export function CardEventoDetail ({evento}) {
+    
     return (
                <div className="shadow banner rounded">
             <Row className="mb-3">

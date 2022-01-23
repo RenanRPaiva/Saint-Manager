@@ -1,6 +1,6 @@
 import { Table } from "react-bootstrap";
 
-export function Inscritos() {
+export function Inscritos({ inscriptions }) {
     return (
         <>
             <h2>Formulário de Inscrição</h2>
@@ -13,6 +13,14 @@ export function Inscritos() {
                         <th>Nome</th>
                     </tr>
                 </thead>
+                <tbody>
+                    {inscriptions.map((inscription) => (
+                        <tr key={inscription.id}>
+                            <td>{inscription.id}</td>
+                            <td>{inscription.name}</td>
+                        </tr>
+                    ))}
+                </tbody>
             </Table>
 
         </>
