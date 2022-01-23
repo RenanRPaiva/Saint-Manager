@@ -10,8 +10,7 @@ function App() {
       <Route path="/" element={<HomeView />} />  
       <Route path="/eventos" element={<EventoView />} />  
       <Route path="/eventos/:id" element={<EventoDetailView />} />  
-      <Route path="*" element={<NotFoundView />} /> 
-          
+      <Route path="*" element={<NotFoundView />} />           
     </Routes>
   );
 }

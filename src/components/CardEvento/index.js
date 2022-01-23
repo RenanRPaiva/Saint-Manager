@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 
 export function CardEvento({ evento }) {
-    return (
+    return (      
         <Card as='article' className="text-center shadow card-evento">
             <Card.Img variant="top" src={evento.image} alt='Jovens' width={'306px'} height={'139px'} className="rounded" />
             <Card.Body>
@@ -11,7 +11,7 @@ export function CardEvento({ evento }) {
                 <Card.Text>{evento.shortDescription}</Card.Text>
                 <Button as={Link} to={`/eventos/${evento.id}`} className='btn-inscrever mb-3'>Inscreva-se!</Button>
             </Card.Body>
-        </Card>
+        </Card>      
     )
 }
 
@@ -27,6 +27,7 @@ export function CardEventoHome({ evento }) {
                 </Card.Body>
             </Card>
         </Col>
+
     ))
 
 }

@@ -96,6 +96,11 @@ background-color: #FFA451 !important;
 .evento-text-inf {
     font-size: 10px;
 }
+@media (max-width: 768px) {
+    .btn-event-remove{
+        display: none;
+    }    
+}
 /*FOOTER*/
 .footer{
     background-color: #FFA451;

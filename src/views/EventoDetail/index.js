@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import { CardEventoDetail } from "./cardEventoDetail";
 import { Inscritos } from "./inscritos";
 import Jovem from "../../assets/img/Jovens.png";
+import { InscritoForm } from "./inscritoform";
 
 const evento = {
     id: 1,
@@ -35,6 +36,7 @@ export function EventoDetailView() {
         <Layout>
             <Container>
                 <CardEventoDetail evento={evento} />
+                <InscritoForm />
                 <Inscritos inscriptions={evento.inscriptions} />
             </Container>
         </Layout>
