@@ -86,12 +86,11 @@ background-color: #FFA451 !important;
 }
 /* EVENTOS DETAIS */
 .evento-detail {
-    width: 100px;
-    height: 100px;
+    width: 100%;
 }
 
-.evento-text{
-    margin-left: -25px;
+.banner-pad {
+    padding-top: 25px ;
 }
 .evento-text-inf {
     font-size: 10px;

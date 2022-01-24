@@ -8,10 +8,10 @@ export function CardEventoDetail ({evento}) {
     return (
                <div className="shadow banner rounded">
             <Row className="mb-3">
-                <Col>
+                <Col lg={4}>
                     <img src={evento.image} alt={evento.name} className='evento-detail rounded' />
                 </Col>
-                <Col className="banner-text text-center evento-text">
+                <Col lg={8} className="banner-text text-center banner-pad">
                     <h1 className="">{evento.name}</h1>
                     <p>{evento.shortDescription}</p>
                 </Col>
