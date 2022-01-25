@@ -10,10 +10,9 @@ export function InscritoForm() {
     })
     
     const handleChange = (event) => {
-        const newFormData = {
-            ...formData
-        }
-        newFormData[event.target.name] = event.target.value
+        const newFormData = { ...formData }
+        const name = event.target.name 
+        newFormData[name] = event.target.value
         setFormData(newFormData)
     }
     const handleSubmit = (event) => {
