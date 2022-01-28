@@ -12,15 +12,12 @@ import { useEffect, useState } from "react";
 export function HomeView() {
   const [eventosHome, setEventosHome] = useState([])
   useEffect(() => {
-      const promise = fetch('http://localhost:3001/eventos')
-      promise.then((response) => {
-          const promiseRes = response.json()
-          promiseRes.then((data) => {
-              setEventosHome(data)
-          })
-      })
+    fetch('http://localhost:3001/eventos')
+      .then(response => response.json())
+      .then(data => setEventosHome(data))
   },
-      [])
+    [])
+  const threeEventos = eventosHome.slice(0, 3)
   return (
     <Layout>
       <Container>
@@ -38,7 +35,7 @@ export function HomeView() {
           </Row>
         </Container>
         <Row>
-          <CardEventoHome evento={eventosHome} />
+          <CardEventoHome evento={threeEventos} />
           <Col className="grid-eventos-item mb-3" xs={6} md={4} lg={3}>
             <Card as='article' className="text-center shadow card-evento">
               <Card.Img variant="top" src={OutrosEventos} alt='Outros Eventos' width={'306px'} height={'139px'} className="rounded" />

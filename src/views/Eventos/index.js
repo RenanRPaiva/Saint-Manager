@@ -7,13 +7,9 @@ import { useEffect, useState } from "react";
 export function EventoView() {
     const [eventos, setEventos] = useState([])
     useEffect(() => {
-        const promise = fetch('http://localhost:3001/eventos')
-        promise.then((response) => {
-            const promiseRes = response.json()
-            promiseRes.then((data) => {
-                setEventos(data)
-            })
-        })
+        fetch('http://localhost:3001/eventos')
+            .then(response => response.json())
+            .then(data => setEventos(data))
     },
         [])
     return (
