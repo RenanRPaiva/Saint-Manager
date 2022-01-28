@@ -2,13 +2,12 @@ import { Layout } from "../../components/Layout";
 import { Container } from "react-bootstrap";
 import { CardEventoDetail } from "./cardEventoDetail";
 import { Inscritos } from "./inscritos";
-import Jovem from "../../assets/img/Jovens.png";
 import { InscritoForm } from "./inscritoform";
 
 const evento = {
     id: 1,
     name: 'Culto Jovem',
-    image: Jovem,
+    image: "Jovem",
     shortDescription: '1° Culto Jovem do ano! Seu presença é essencial, não esqueça da mascara!',
     depart: 'Jovem',
     coord: 'John e Anna',
