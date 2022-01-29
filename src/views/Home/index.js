@@ -1,4 +1,4 @@
-import { Button, Card, Col, Container, Row, Spinner } from "react-bootstrap";
+import { Alert, Button, Card, Col, Container, Row, Spinner } from "react-bootstrap";
 import { Layout } from "../../components/Layout";
 import Banner from "../../assets/img/Cruz.jpg";
 import OutrosEventos from "../../assets/img/Eventos.jfif";
@@ -12,11 +12,17 @@ import { useEffect, useState } from "react";
 export function HomeView() {
   const [loading, setLoading] = useState(true)
   const [eventosHome, setEventosHome] = useState([])
+  const [generalError, setGeneralError] = useState()
   useEffect(() => {
     fetch('http://localhost:3001/eventos')
       .then(response => response.json())
       .then(data => {
         setEventosHome(data)
+      })
+      .catch(() => {
+        setGeneralError('Não foi possível listar os Eventos. Recarregue a página')
+      })
+      .finally(() => {
         setLoading(false)
       })
   },
@@ -38,6 +44,9 @@ export function HomeView() {
             </Col>
           </Row>
         </Container>
+        {generalError && (
+          <Alert variant="danger">{generalError}</Alert>
+        )}
         {loading ? (
           <div className="text-center">
             <Spinner animation="border" role="status" variant="warning">
