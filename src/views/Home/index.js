@@ -20,7 +20,7 @@ export function HomeView() {
         setEventosHome(data)
       })
       .catch(() => {
-        setGeneralError('Não foi possível listar os Eventos. Recarregue a página')
+        setGeneralError('Não foi possível listar os Eventos. Recarregue a página.')
       })
       .finally(() => {
         setLoading(false)

@@ -1,5 +1,5 @@
 import { Layout } from "../../components/Layout";
-import { Container, Spinner } from "react-bootstrap";
+import { Alert, Container, Spinner } from "react-bootstrap";
 import { CardEventoDetail } from "./cardEventoDetail";
 import { Inscritos } from "./inscritos";
 import { InscritoForm } from "./inscritoform";
@@ -10,13 +10,19 @@ export function EventoDetailView() {
     const { id } = useParams()
     const [loading, setLoading] = useState(true)
     const [evento, setEvento] = useState()
+    const [generalError, setGeneralError] = useState()
     useEffect(() => {
         const fetchEventos = async () => {
-            setLoading(true)
-            const response = await fetch(`http://localhost:3001/eventos/${id}?_embed=inscriptions`)
-            const data = await response.json()
-            setEvento(data)
-            setLoading(false)
+            try {
+                setLoading(true)
+                const response = await fetch(`http://localhost:3001/eventos/${id}?_embed=inscriptions`)
+                const data = await response.json()
+                setEvento(data)
+                setLoading(false)
+            } catch {
+                setGeneralError('Não foi possível buscar o Evento. Recarregue a página.')
+                setLoading(false)
+            }
         }
         fetchEventos()
     }, [id])
@@ -32,9 +38,15 @@ export function EventoDetailView() {
     return (
         <Layout>
             <Container>
-                <CardEventoDetail evento={evento} />
-                <InscritoForm />
-                <Inscritos inscriptions={evento.inscriptions} />
+                {generalError ? (
+                    <Alert variant="danger" className="mt-4">{generalError}</Alert>) : (
+                    <>
+                        <CardEventoDetail evento={evento} />
+                        <InscritoForm />
+                        <Inscritos inscriptions={evento.inscriptions} />
+                    </>
+                )}
+
             </Container>
         </Layout>
     )
