@@ -3,34 +3,23 @@ import { Container } from "react-bootstrap";
 import { CardEventoDetail } from "./cardEventoDetail";
 import { Inscritos } from "./inscritos";
 import { InscritoForm } from "./inscritoform";
-
-const evento = {
-    id: 1,
-    name: 'Culto Jovem',
-    image: "Jovem",
-    shortDescription: '1° Culto Jovem do ano! Seu presença é essencial, não esqueça da mascara!',
-    depart: 'Jovem',
-    coord: 'John e Anna',
-    team: 'Ellen, Cleber, João e José',
-    date: '01/05/22',
-    time: '19:00',
-    local: 'Templo Principal',
-    inscriptions: [
-        {
-            id: 1,
-            name: 'Renan Paiva',
-            email: 'renan17paiva@gmail.com',
-        },
-        {
-            id: 2,
-            name: 'João Silva',
-            email: 'joaosilva@exeemplo.com',
-        }
-    ]
-}
-
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export function EventoDetailView() {
+    const { id } = useParams()
+    const [evento, setEvento] = useState()
+    useEffect(() => {
+        const fetchEventos = async () => {
+            const response = await fetch(`http://localhost:3001/eventos/${id}?_embed=inscriptions`)
+            const data = await response.json()
+           setEvento(data)
+        }       
+        fetchEventos()
+    }, [id])
+    if (!evento){
+        return null
+    }
     return (
         <Layout>
             <Container>
