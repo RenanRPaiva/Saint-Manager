@@ -12,6 +12,7 @@ export function EventoDetailView() {
     const [evento, setEvento] = useState()
     useEffect(() => {
         const fetchEventos = async () => {
+            setLoading(true)
             const response = await fetch(`http://localhost:3001/eventos/${id}?_embed=inscriptions`)
             const data = await response.json()
             setEvento(data)
