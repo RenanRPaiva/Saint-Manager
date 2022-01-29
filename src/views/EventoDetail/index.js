@@ -4,7 +4,7 @@ import { CardEventoDetail } from "./cardEventoDetail";
 import { Inscritos } from "./inscritos";
 import { InscritoForm } from "./inscritoform";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { NotFoundView } from "../NotFound";
 
 export function EventoDetailView() {
@@ -12,10 +12,9 @@ export function EventoDetailView() {
     const [loading, setLoading] = useState(true)
     const [evento, setEvento] = useState()
     const [generalError, setGeneralError] = useState()
-    useEffect(() => {
-        const fetchEventos = async () => {
+    const fetchEventos = useCallback(
+        async () => {
             try {
-                setLoading(true)
                 const response = await fetch(`http://localhost:3001/eventos/${id}?_embed=inscriptions`)
                 if (response.status === 404) {
                     throw new Error('404')
@@ -28,9 +27,16 @@ export function EventoDetailView() {
                 setGeneralError(message)
                 setLoading(false)
             }
-        }
+        },
+        [id]
+    )
+    useEffect(() => {
+        setLoading(true)
         fetchEventos()
-    }, [id])
+    }, [fetchEventos])
+    const handleOnRegister = () => {
+        fetchEventos()
+    }
     if (loading) {
         return (
             <div className="text-center mt-5">
@@ -40,7 +46,7 @@ export function EventoDetailView() {
             </div>
         )
     }
-    if (generalError === '404'){
+    if (generalError === '404') {
         return <NotFoundView />
     }
     return (
@@ -50,7 +56,7 @@ export function EventoDetailView() {
                     <Alert variant="danger" className="mt-4">{generalError}</Alert>) : (
                     <>
                         <CardEventoDetail evento={evento} />
-                        <InscritoForm eventoId={id}/>
+                        <InscritoForm eventoId={id} onRegister={handleOnRegister} />
                         <Inscritos inscriptions={evento.inscriptions} />
                     </>
                 )}

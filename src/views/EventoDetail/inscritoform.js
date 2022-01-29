@@ -7,11 +7,10 @@ const initialValue = {
     email: '',
     password: ''
 }
-export function InscritoForm({ eventoId }) {
+export function InscritoForm({ eventoId, onRegister }) {
     const [generalError, setGeneralError] = useState()
     const [isSubmiting, setIsSubmiting] = useState(false)
     const [showSuccess, setShowSuccess] = useState(false)
-
     const [formData, setFormData] = useState(initialValue)
     const handleChange = (event) => {
         const newFormData = { ...formData }
@@ -39,6 +38,7 @@ export function InscritoForm({ eventoId }) {
             })
             setShowSuccess(true)
             setFormData(initialValue)
+            onRegister()
         } catch {
             setGeneralError('Falha ao realizar inscrição. Tente novamente!')
         }
