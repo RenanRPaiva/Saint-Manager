@@ -13,9 +13,9 @@ export function Header() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto">
-                            <Nav.Link as={Link} to="/eventos" className='btn-remove'>Eventos</Nav.Link>
-                            <Nav.Link as={Link} to="/login">Entrar</Nav.Link>
-                            <Nav.Link as={Link} to="/" className='btn-remove'>Home</Nav.Link>
+                            <Nav.Link as={Link} to="/eventos" className="m-2">Eventos</Nav.Link>
+                            <Nav.Link as={Link} to="/login" className="m-2">Entrar</Nav.Link>
+                            <Nav.Link as={Link} to="/" className='btn-remove m-2'>Home</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

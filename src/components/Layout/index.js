@@ -5,7 +5,7 @@ export function Layout({ children }) {
     return (
         <>
             <Header />
-            <main>
+            <main className='padbody'>
                 {children}
             </main>
             <Footer />

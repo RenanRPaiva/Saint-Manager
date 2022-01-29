@@ -6,7 +6,7 @@ import { Col, Row } from "react-bootstrap";
 export function CardEventoDetail ({evento}) {
     
     return (
-               <div className="shadow banner rounded">
+               <div className="shadow banner rounded bannerCont">
             <Row className="mb-3">
                 <Col lg={4}>
                     <img src={evento.image} alt={evento.name} className='evento-detail rounded' />

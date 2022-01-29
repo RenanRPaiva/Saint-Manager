@@ -1,6 +1,11 @@
 /* HEADER*/
 .main-navbar{
     background-color: #FFA451;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
 }
 .main-navbar .navbar-toggler{
     background-color: #FFF;
@@ -23,9 +28,14 @@
 }
 
 /* BANNER HOME - CARD HOME*/
-.banner{
-    margin: 45px;
+.padbody {
+    padding-top: 75px;
 }
+.bannerCont {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
 .banner-text h1{
             font-size: x-large;
     }
@@ -40,19 +50,8 @@
         box-sizing: content-box;
     }
 }    
-@media (max-device-width:768px) {
-    .banner-text p{
-        font-size: 11px;
-    }
-}
-@media (max-device-width: 576px) {
-    .banner-text h1{
-        font-size: small;
-    }
-    .banner-text p{
-        font-size: 8px;
-    }
-}
+
+
 
 
 .btn-inscrever{
@@ -92,9 +91,7 @@ background-color: #FFA451 !important;
 .banner-pad {
     padding-top: 25px ;
 }
-.evento-text-inf {
-    font-size: 10px;
-}
+
 @media (max-width: 768px) {
     .btn-event-remove{
         display: none;

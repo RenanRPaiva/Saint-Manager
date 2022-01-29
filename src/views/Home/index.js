@@ -31,7 +31,7 @@ export function HomeView() {
   return (
     <Layout>
       <Container>
-        <Container>
+        <Container className="bannerCont">
           <Row className='shadow banner rounded'>
             <Col lg={4} className='rounded-left banner-img-col' >
               <img src={Banner} alt="Banner de Igreja" className='banner-img rounded' />

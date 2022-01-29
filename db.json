@@ -80,6 +80,13 @@
       "password": "123",
       "eventoId": 1,
       "id": 1
+    },
+    {
+      "name": "Renan",
+      "email": "renan_13rj@yahoo.com.br",
+      "password": "85522",
+      "eventoId": 6,
+      "id": 2
     }
   ]
 }
