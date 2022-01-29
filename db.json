@@ -72,5 +72,14 @@
       "time": "14:00",
       "local": "Salão do Templo Antigo"
     }
+  ],
+  "inscriptions": [
+    {
+      "name": "João",
+      "email": "joao@joao.com",
+      "password": "123",
+      "eventoId": 1,
+      "id": 1
+    }
   ]
 }

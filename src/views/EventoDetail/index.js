@@ -50,7 +50,7 @@ export function EventoDetailView() {
                     <Alert variant="danger" className="mt-4">{generalError}</Alert>) : (
                     <>
                         <CardEventoDetail evento={evento} />
-                        <InscritoForm />
+                        <InscritoForm eventoId={id}/>
                         <Inscritos inscriptions={evento.inscriptions} />
                     </>
                 )}
