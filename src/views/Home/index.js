@@ -1,4 +1,4 @@
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Button, Card, Col, Container, Row, Spinner } from "react-bootstrap";
 import { Layout } from "../../components/Layout";
 import Banner from "../../assets/img/Cruz.jpg";
 import OutrosEventos from "../../assets/img/Eventos.jfif";
@@ -10,11 +10,15 @@ import { useEffect, useState } from "react";
 
 
 export function HomeView() {
+  const [loading, setLoading] = useState(true)
   const [eventosHome, setEventosHome] = useState([])
   useEffect(() => {
     fetch('http://localhost:3001/eventos')
       .then(response => response.json())
-      .then(data => setEventosHome(data))
+      .then(data => {
+        setEventosHome(data)
+        setLoading(false)
+      })
   },
     [])
   const threeEventos = eventosHome.slice(0, 3)
@@ -34,18 +38,26 @@ export function HomeView() {
             </Col>
           </Row>
         </Container>
-        <Row>
-          <CardEventoHome evento={threeEventos} />
-          <Col className="grid-eventos-item mb-3" xs={6} md={4} lg={3}>
-            <Card as='article' className="text-center shadow card-evento">
-              <Card.Img variant="top" src={OutrosEventos} alt='Outros Eventos' width={'306px'} height={'139px'} className="rounded" />
-              <Card.Body>
-                <Card.Title>Encontre Outros Eventos</Card.Title>
-                <Button as={Link} to='/eventos' className='btn-inscrever mb-3'>Veja Mais!</Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
+        {loading ? (
+          <div className="text-center">
+            <Spinner animation="border" role="status" variant="warning">
+              <span className="visually-hidden">Carregando...</span>
+            </Spinner>
+          </div>
+        ) : (
+          <Row>
+            <CardEventoHome evento={threeEventos} />
+            <Col className="grid-eventos-item mb-3" xs={6} md={4} lg={3}>
+              <Card as='article' className="text-center shadow card-evento">
+                <Card.Img variant="top" src={OutrosEventos} alt='Outros Eventos' width={'306px'} height={'139px'} className="rounded" />
+                <Card.Body>
+                  <Card.Title>Encontre Outros Eventos</Card.Title>
+                  <Button as={Link} to='/eventos' className='btn-inscrever mb-3'>Veja Mais!</Button>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        )}
       </Container>
     </ Layout>
   )
