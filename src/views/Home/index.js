@@ -2,14 +2,17 @@ import { Alert, Button, Card, Col, Container, Row, Spinner } from "react-bootstr
 import { Layout } from "../../components/Layout";
 import Banner from "../../assets/img/Cruz.jpg";
 import OutrosEventos from "../../assets/img/Eventos.jfif";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CardEventoHome } from "../../components/CardEvento";
 import { useEffect, useState } from "react";
+import { CardCustom } from "../../components/CardEvento";
+
 
 
 
 
 export function HomeView() {
+  const navigate = useNavigate()
   const [loading, setLoading] = useState(true)
   const [eventosHome, setEventosHome] = useState([])
   const [generalError, setGeneralError] = useState()
@@ -28,6 +31,10 @@ export function HomeView() {
   },
     [])
   const threeEventos = eventosHome.slice(0, 3)
+
+  const redirectEvento = (id) => {
+    navigate(`/eventos/${id}`)
+  }
   return (
     <Layout>
       <Container>
@@ -55,9 +62,22 @@ export function HomeView() {
           </div>
         ) : (
           <Row>
-            <CardEventoHome evento={threeEventos} />
+            {threeEventos.map((evento, index) => {
+              return (
+                <Col key={index} className="grid-eventos-item mb-3 " xs={6} md={4} lg={3}>
+                  <CardCustom
+                    imageSrc={evento.image}
+                    altImg={evento.name}
+                    title={evento.name}
+                    description={evento.shortDescription}
+                    textButton='Inscrever'
+                    onClickButton={() => redirectEvento(evento.id)}
+                  />
+                </Col>
+              )
+            })}
             <Col className="grid-eventos-item mb-3" xs={6} md={4} lg={3}>
-              <Card as='article' className="text-center shadow card-evento">
+              <Card as='article' className="text-center card-evento">
                 <Card.Img variant="top" src={OutrosEventos} alt='Outros Eventos' width={'306px'} height={'139px'} className="rounded" />
                 <Card.Body>
                   <Card.Title>Encontre Outros Eventos</Card.Title>
