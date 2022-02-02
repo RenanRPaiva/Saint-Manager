@@ -71,7 +71,7 @@ export function HomeView() {
                     description={evento.shortDescription}
                     textButton='Inscreva-se!'
                     onClickButton={() => redirectEvento(evento.id)}
-                    hideDescriptionMobile={true}
+                    hideDescriptionMobile={'true'}
                   />
                 </Col>
               )

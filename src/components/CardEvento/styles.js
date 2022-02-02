@@ -10,20 +10,19 @@ export const ImgCard = styled(Card.Img)`
 export const ButtonCard = styled(Button)`
     border-color: #FFA451 !important;
     background-color: #FFA451 !important;
+    margin-top: auto;
 `;
 
 export const TextCard = styled(Card.Text)`
-    ${props => props.hideDescriptionMobile ? `
+    ${props => props.hidedescriptionmobile ? `
     @media (max-width: 768px) {   
         display: none;   
     }` : ''}   
     
 `
-
-export const TitleCard = styled(Card.Title)`
-    height: 45px;
+export const BodyCard = styled(Card.Body)`
+    display: flex;
+    flex-direction: column;
 `
 
-export const ContainerDescription = styled.div`
- height: 85px;
-`
+

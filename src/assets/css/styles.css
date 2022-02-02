@@ -68,22 +68,7 @@ background-color: #FFA451 !important;
     display: flex;
     flex-direction: column;
 }
-@media (max-width: 768px) {
-    .card-remove{
-        display: none;
-    }
-}
-/* EVENTOS - GRID CARD */
-.grid-eventos-item .card-evento {
-    height: 100%;
-}
-.grid-eventos-item .card-evento .card-body{
-    display: flex;
-    flex-direction: column;    
-}
-.grid-eventos-item .card-evento .btn{
-    margin-top: auto;
-}
+
 /* EVENTOS DETAIS */
 .evento-detail {
     width: 100%;
