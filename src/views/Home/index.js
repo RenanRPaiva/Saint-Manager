@@ -1,9 +1,8 @@
-import { Alert, Button, Card, Col, Container, Row, Spinner } from "react-bootstrap";
+import { Alert, Col, Container, Row, Spinner } from "react-bootstrap";
 import { Layout } from "../../components/Layout";
 import Banner from "../../assets/img/Cruz.jpg";
 import OutrosEventos from "../../assets/img/Eventos.jfif";
-import { Link, useNavigate } from "react-router-dom";
-import { CardEventoHome } from "../../components/CardEvento";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { CardCustom } from "../../components/CardEvento";
 
@@ -70,20 +69,22 @@ export function HomeView() {
                     altImg={evento.name}
                     title={evento.name}
                     description={evento.shortDescription}
-                    textButton='Inscrever'
+                    textButton='Inscreva-se!'
                     onClickButton={() => redirectEvento(evento.id)}
+                    hideDescriptionMobile={true}
                   />
                 </Col>
               )
             })}
             <Col className="grid-eventos-item mb-3" xs={6} md={4} lg={3}>
-              <Card as='article' className="text-center card-evento">
-                <Card.Img variant="top" src={OutrosEventos} alt='Outros Eventos' width={'306px'} height={'139px'} className="rounded" />
-                <Card.Body>
-                  <Card.Title>Encontre Outros Eventos</Card.Title>
-                  <Button as={Link} to='/eventos' className='btn-inscrever mb-3'>Veja Mais!</Button>
-                </Card.Body>
-              </Card>
+             <CardCustom  
+              imageSrc={OutrosEventos}
+              altImg='Outros Eventos'
+              title= 'Encontre Outros Eventos'          
+              textButton='Veja Mais!'
+              onClickButton={() => navigate('/eventos')}
+             
+             />
             </Col>
           </Row>
         )}
@@ -91,3 +92,4 @@ export function HomeView() {
     </ Layout>
   )
 }
+
