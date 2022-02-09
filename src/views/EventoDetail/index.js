@@ -6,6 +6,7 @@ import { InscritoForm } from "./inscritoform";
 import { useParams } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
 import { NotFoundView } from "../NotFound";
+import { getEventoById } from "../../services/Eventos.services";
 
 export function EventoDetailView() {
     const { id } = useParams()
@@ -15,15 +16,11 @@ export function EventoDetailView() {
     const fetchEventos = useCallback(
         async () => {
             try {
-                const response = await fetch(`http://localhost:3001/eventos/${id}?_embed=inscriptions`)
-                if (response.status === 404) {
-                    throw new Error('404')
-                }
-                const data = await response.json()
+                const data = await getEventoById(id)
                 setEvento(data)
                 setLoading(false)
             } catch (error) {
-                const message = error.message === '404' ? '404' : 'Não foi possível buscar o Evento. Recarregue a página.'
+                const message = error.message === 'Response not OK.' ? '404' : 'Não foi possível buscar o Evento. Recarregue a página.'
                 setGeneralError(message)
                 setLoading(false)
             }
