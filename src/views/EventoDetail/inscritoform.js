@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button, Col, Form, Row, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { createInscription } from "../../services/inscriptions.services.js";
+
 
 const initialValue = {
     name: '',
@@ -25,17 +27,11 @@ export function InscritoForm({ eventoId, onRegister }) {
             setIsSubmiting(true)
             setGeneralError(undefined)
             setShowSuccess(false)
-            const body = {
+            const inscriptionData = {
                 ...formData,
                 eventoId: parseInt(eventoId)
             }
-            await fetch('http://localhost:3001/inscriptions', {
-                method: 'POST',
-                body: JSON.stringify(body),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
+            await createInscription(inscriptionData)
             setShowSuccess(true)
             setFormData(initialValue)
             onRegister()
