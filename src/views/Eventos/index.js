@@ -3,6 +3,7 @@ import { CardCustom } from "../../components/CardEvento";
 import { Layout } from "../../components/Layout";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { getEventos } from "../../services/Eventos.services";
 
 export function EventoView() {
     const navigate = useNavigate()
@@ -10,19 +11,17 @@ export function EventoView() {
     const [eventos, setEventos] = useState([])
     const [generalError, setGeneralError] = useState()
     useEffect(() => {
-        fetch('http://localhost:3001/eventos')
-            .then(response => response.json())
-            .then(data => {
+        const fetchEventos = async () => {
+            try {
+                const data = await getEventos()
                 setEventos(data)
-            })
-            .catch(() => {
+            } catch {
                 setGeneralError('Não foi possível listar os Eventos. Recarregue a página')
-            })
-            .finally(() => {
-                setLoading(false)
-            })
-    },
-        [])
+            }
+            setLoading(false)
+        }
+        fetchEventos()
+    }, [])
     const redirectEvento = (id) => {
         navigate(`/eventos/${id}`)
     }
