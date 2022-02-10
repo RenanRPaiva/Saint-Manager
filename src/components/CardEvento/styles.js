@@ -8,8 +8,8 @@ export const ImgCard = styled(Card.Img)`
 `;
 
 export const ButtonCard = styled(Button)`
-    border-color: #FFA451 !important;
-    background-color: #FFA451 !important;
+    border-color: ${props => props.theme.mainColor} !important;
+    background-color: ${props => props.theme.mainColor} !important;
     margin-top: auto;
 `;
 

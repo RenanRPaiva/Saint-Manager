@@ -84,12 +84,7 @@ background-color: #FFA451 !important;
     }    
 }
 /*FOOTER*/
-.footer{
-    background-color: #FFA451;
-    color: #FFF;
-    margin-top: 20px;
-    padding: 5px 0;
-}
+
 html, body, #root{
     height: 100%;
 }
