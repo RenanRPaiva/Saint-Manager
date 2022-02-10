@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { CardCustom } from "../../components/CardEvento";
 import styled from "styled-components";
+import { apiUrl } from "../../services/Api"
 
 
 
@@ -17,7 +18,7 @@ export function HomeView() {
   const [eventosHome, setEventosHome] = useState([])
   const [generalError, setGeneralError] = useState()
   useEffect(() => {
-    fetch('http://localhost:3001/eventos')
+    fetch(`http://${apiUrl}/eventos`)
       .then(response => response.json())
       .then(data => {
         setEventosHome(data)
