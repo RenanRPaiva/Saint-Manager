@@ -3,7 +3,7 @@ import { CardCustom } from "../../components/CardEvento";
 import { Layout } from "../../components/Layout";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getEventos } from "../../services/Eventos.services";
+import { getEventos } from "../../services/Eventos";
 
 export function EventoView() {
     const navigate = useNavigate()

@@ -1,4 +1,4 @@
-import { apiUrl } from "./Api.service"
+import { apiUrl } from "./Api"
 
 export const getEventoById = async (id) => {
     const response = await fetch(`${apiUrl}/eventos/${id}?_embed=inscriptions`)

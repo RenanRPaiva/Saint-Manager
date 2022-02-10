@@ -6,7 +6,7 @@ import { InscritoForm } from "./inscritoform";
 import { useParams } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
 import { NotFoundView } from "../NotFound";
-import { getEventoById } from "../../services/Eventos.services";
+import { getEventoById } from "../../services/Eventos";
 
 export function EventoDetailView() {
     const { id } = useParams()
