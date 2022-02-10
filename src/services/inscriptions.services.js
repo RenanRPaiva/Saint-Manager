@@ -1,4 +1,4 @@
-import { apiUrl } from "./api.service"
+import { apiUrl } from "./Api.service"
 
 export const createInscription = async (inscriptionData) => {
     await fetch(`${apiUrl}/inscriptions`, {
