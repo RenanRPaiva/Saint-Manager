@@ -1,5 +1,7 @@
+import { apiUrl } from "./api.service"
+
 export const createInscription = async (inscriptionData) => {
-    await fetch('http://localhost:3001/inscriptions', {
+    await fetch(`${apiUrl}/inscriptions`, {
         method: 'POST',
         body: JSON.stringify(inscriptionData),
         headers: {
