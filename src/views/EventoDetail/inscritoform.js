@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, Col, Form, Row, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 import { createInscription } from "../../services/inscriptions.services.js";
 
 
@@ -89,10 +90,18 @@ export function InscritoForm({ eventoId, onRegister }) {
                         <Button type="submit" disabled={isSubmiting}>{isSubmiting ? 'Enviando...' : 'Inscrever'}</Button>
                     </Col>
                     <Col>
-                        <Button as={Link} to="/eventos" className='btn-inscrever btn-event-remove'>Outros eventos</Button>
+                        <ButtonCard forwardedAs={Link} to="/eventos">Outros eventos</ButtonCard>
                     </Col>
                 </Row>
             </Form>
         </>
     )
 }
+
+export const ButtonCard = styled(Button)`
+    border-color: ${props => props.theme.mainColor} !important;
+    background-color: ${props => props.theme.mainColor} !important;
+    @media (max-width: 768px) {
+        display: none;
+    }  
+`

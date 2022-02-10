@@ -1,18 +1,19 @@
 import { Col, Row } from "react-bootstrap";
+import styled from "styled-components";
 
 
 
 
-export function CardEventoDetail ({evento}) {
-    
+export function CardEventoDetail({ evento }) {
+
     return (
-               <div className="shadow banner rounded bannerCont">
+        <BannerCard className="shadow rounded">
             <Row className="mb-3">
                 <Col lg={4}>
-                    <img src={evento.image} alt={evento.name} className='evento-detail rounded' />
+                    <img src={evento.image} alt={evento.name} className='w-100 rounded' />
                 </Col>
-                <Col lg={8} className="banner-text text-center banner-pad">
-                    <h1 className="">{evento.name}</h1>
+                <Col lg={8} className="text-center pt-3">
+                    <H1Styled>{evento.name}</H1Styled>
                     <p>{evento.shortDescription}</p>
                 </Col>
             </Row>
@@ -25,8 +26,17 @@ export function CardEventoDetail ({evento}) {
             </div>
             <div>
                 <p className="text-center">Data: {evento.date} - {evento.time} - Local: {evento.local}</p>
-                <p className="text-end evento-text-inf">Lembre-se das medidas de prevenção ao COVID-19!</p>
+                <p className="text-end">Lembre-se das medidas de prevenção ao COVID-19!</p>
             </div>
-        </div>
+        </BannerCard>
     )
 }
+
+const BannerCard = styled.div`
+    margin-top: 25px;
+    margin-bottom: 25px;
+    object-fit: cover;
+`
+const H1Styled = styled.h1`
+   font-size: x-large;
+`

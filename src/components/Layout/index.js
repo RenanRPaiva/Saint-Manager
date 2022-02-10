@@ -1,14 +1,21 @@
+import styled from 'styled-components'
 import { Header } from './Header'
 import { Footer } from './Footer'
+
+
 
 export function Layout({ children }) {
     return (
         <>
             <Header />
-            <main className='padbody'>
+            <MainStyled>
                 {children}
-            </main>
+            </MainStyled>
             <Footer />
         </>
     )
 }
+
+const MainStyled = styled.main`
+   padding-top: 75px;
+`

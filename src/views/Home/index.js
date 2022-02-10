@@ -5,6 +5,7 @@ import OutrosEventos from "../../assets/img/Eventos.jfif";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { CardCustom } from "../../components/CardEvento";
+import styled from "styled-components";
 
 
 
@@ -37,19 +38,19 @@ export function HomeView() {
   return (
     <Layout>
       <Container>
-        <Container className="bannerCont">
-          <Row className='shadow banner rounded'>
-            <Col lg={4} className='rounded-left banner-img-col' >
-              <img src={Banner} alt="Banner de Igreja" className='banner-img rounded' />
-            </Col>
-            <Col lg={8} className="p-10 banner-text">
-              <h1 className='text-sm-start'>Venha  conhecer o Saint Manager!</h1>
+        <BannerContainerStyled>
+          <BannerRowStyled className='shadow rounded'>
+            <ColBannerStyled lg={4} className='rounded-left' >
+              <ImgBannerStyled src={Banner} alt="Banner de Igreja" className='rounded' />
+            </ColBannerStyled>
+            <Col lg={8} className="p-10">
+              <H1Styled className='text-sm-start'>Venha  conhecer o Saint Manager!</H1Styled>
               <p className='ps-3' >Membros podem se  inscrever a eventos,  visitas e saber muito mais!</p>
               <p className='text-center'>Fique sempre atento  as datas dos eventos, para não perder!</p>
               <p className='text-end'>Que Deus  abençoe a todos!  Volte Sempre!</p>
             </Col>
-          </Row>
-        </Container>
+          </BannerRowStyled>
+        </BannerContainerStyled>
         {generalError && (
           <Alert variant="danger">{generalError}</Alert>
         )}
@@ -82,8 +83,7 @@ export function HomeView() {
               altImg='Outros Eventos'
               title= 'Encontre Outros Eventos'          
               textButton='Veja Mais!'
-              onClickButton={() => navigate('/eventos')}
-             
+              onClickButton={() => navigate('/eventos')}             
              />
             </Col>
           </Row>
@@ -93,3 +93,26 @@ export function HomeView() {
   )
 }
 
+const BannerRowStyled = styled(Row)`
+    object-fit: cover;
+`
+const BannerContainerStyled = styled(Container)`
+    margin-top: 25px;
+    margin-bottom: 25px;
+`
+
+const H1Styled = styled.h1`
+   font-size: x-large;
+`
+
+const ImgBannerStyled = styled.img`
+    width: 100%;
+    height: 100%;
+    margin-left: -12px;
+`
+
+const ColBannerStyled = styled(Col)`
+    @media (max-device-width:992px) {
+      box-sizing: content-box;
+    }
+`
