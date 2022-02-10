@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Button, Col, Form, Row, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { createInscription } from "../../services/Inscriptions.services";
+import { createInscription } from "../../services/Inscriptions";
+
 
 
 const initialValue = {
