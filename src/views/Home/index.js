@@ -18,7 +18,7 @@ export function HomeView() {
   const [eventosHome, setEventosHome] = useState([])
   const [generalError, setGeneralError] = useState()
   useEffect(() => {
-    fetch(`http://${apiUrl}/eventos`)
+    fetch(`${apiUrl}/eventos`)
       .then(response => response.json())
       .then(data => {
         setEventosHome(data)
