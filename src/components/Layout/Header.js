@@ -50,9 +50,7 @@ const NavLinkHomeStyled = styled(Nav.Link)`
         box-shadow: 2px 2px 2px rgba(42, 69, 136, 0.3);
     @media (min-width: 768px) {
         display: none;
-    }    
-}
-        
+    }     
     `
 const NavbarTogglerStyled = styled(Navbar.Toggle)`
     background-color: #FFF;
