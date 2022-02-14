@@ -28,9 +28,8 @@ export function Sidebar({ onClose, isOpen }) {
     )
 }
 
-// display: ${props => props.isOpen ? 'flex' : 'none'};
 const SidebarStyled = styled.header`
-  position: fixed;
+  /* position: fixed;
   top:0;
   left: 0;
   width: 100%;
@@ -38,5 +37,5 @@ const SidebarStyled = styled.header`
   background-color: ${props => props.theme.mainColor};
   z-index: 999;
   margin-left: ${props => props.isOpen ? '0' : '-100%'};
-  transition: all .3s;
+  transition: all .3s; */
 `

@@ -10,11 +10,15 @@ export function LayoutPortal({ children }) {
     const closeSidebar = () => setIsSidebarOpen(false)
     return (
         <>
+            <div className="d-flex flex-grow-1">
             <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
-            <Topbar onOpen={openSidebar} />
-            <MainStyled>
-                {children}
-            </MainStyled>
+            <div className="flex-fill">
+                <MainStyled>
+                <Topbar onOpen={openSidebar} />
+                    {children}
+                </MainStyled>
+            </div>
+            </div>
             <Footer />
         </>
     )
