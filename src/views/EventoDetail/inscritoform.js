@@ -102,7 +102,7 @@ export function InscritoForm({ eventoId, onRegister }) {
 export const ButtonCard = styled(Button)`
     border-color: ${props => props.theme.mainColor} !important;
     background-color: ${props => props.theme.mainColor} !important;
-    @media (max-width: 768px) {
+    @media (max-width: 992px) {
         display: none;
     }  
 `
