@@ -16,7 +16,7 @@ const menuItens = [
 export function Sidebar({ onClose, isOpen }) {
     return (
         <SidebarStyled isOpen={isOpen} className="d-flex flex-column p-3">
-            <CloseButton className="ms-auto" onClick={onClose} />
+            <CloseButton className="ms-auto d-lg-none" onClick={onClose} />
             <p className="h1">Saint Manager</p>
             <hr />
             <Nav variant='pills' className="flex-column">
@@ -29,13 +29,18 @@ export function Sidebar({ onClose, isOpen }) {
 }
 
 const SidebarStyled = styled.header`
-  /* position: fixed;
-  top:0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
+  margin-top: 73px;
   background-color: ${props => props.theme.mainColor};
-  z-index: 999;
-  margin-left: ${props => props.isOpen ? '0' : '-100%'};
-  transition: all .3s; */
+  margin-bottom: -25px;
+  @media (max-width: 991px) {
+      margin-top: auto;
+      position: fixed;
+      top:0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 999;
+      margin-left: ${props => props.isOpen ? '0' : '-100%'};
+      transition: all .3s;
+    }
 `

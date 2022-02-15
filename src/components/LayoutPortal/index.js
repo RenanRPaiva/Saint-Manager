@@ -11,13 +11,13 @@ export function LayoutPortal({ children }) {
     return (
         <>
             <div className="d-flex flex-grow-1">
-            <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
-            <div className="flex-fill">
-                <MainStyled>
+                <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
+                <div className="flex-fill">
                 <Topbar onOpen={openSidebar} />
-                    {children}
-                </MainStyled>
-            </div>
+                    <MainStyled>
+                        {children}
+                    </MainStyled>
+                </div>
             </div>
             <Footer />
         </>

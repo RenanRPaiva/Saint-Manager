@@ -5,10 +5,10 @@ import Logo from '../../assets/img/Logo-saint-manager.png'
 
 export function Topbar({ onOpen }) {
     return (
-        <NavbarStyled expand="md">
+        <NavbarStyled expand="lg">
             <Container fluid>
                 <Navbar.Toggle onClick={onOpen} />
-                <Navbar.Brand as={Link} to="/">
+                <Navbar.Brand as={Link} to="/portal">
                     <img src={Logo} alt="Logo Saint Manager" width={46.58} height={46.58} />
                 </Navbar.Brand>
                 <Nav>
