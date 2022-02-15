@@ -1,20 +1,22 @@
 import { LayoutPortal } from "../../components/LayoutPortal";
 import LogoT from '../../assets/img/Logo-saint-manager-transp.png'
-import { Container } from "react-bootstrap";
 import styled from "styled-components";
+import { PortalTitle } from "../../components/PortalTitle";
+import { Alert } from "react-bootstrap";
 
 export function DashboardView() {
     return (
         <LayoutPortal>
-            <ContainerStyled fluid>
-                <h1>Bem vindo(a) Renan!</h1>
+            <DivStyled>
+                <PortalTitle>Bem vindo(a) Renan!</PortalTitle>
                 <p>Utilize o menu lateral para gerenciar Saint Manager.</p>
-            </ContainerStyled>
+                <Alert variant="info" className="opacity-75">Você também recebe um e-mail confimando a inscrição no evento.</Alert>
+            </DivStyled>
         </LayoutPortal>
     )
 }
 
-const ContainerStyled = styled(Container)`
+const DivStyled = styled.div`
     background-image: url(${LogoT});
     background-position: center;
     height: 600px;
