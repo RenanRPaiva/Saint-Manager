@@ -1,4 +1,4 @@
-import { Alert, Col, Container, Row, Spinner } from "react-bootstrap";
+import { Alert, Col, Container, Row } from "react-bootstrap";
 import { Layout } from "../../components/Layout";
 import Banner from "../../assets/img/Cruz.jpg";
 import OutrosEventos from "../../assets/img/Eventos.jfif";
@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { CardCustom } from "../../components/CardEvento";
 import styled from "styled-components";
 import { apiUrl } from "../../services/Api"
+import { Loading } from "../../components/Loading";
 
 
 
@@ -56,11 +57,7 @@ export function HomeView() {
           <Alert variant="danger">{generalError}</Alert>
         )}
         {loading ? (
-          <div className="text-center">
-            <Spinner animation="border" role="status" variant="warning">
-              <span className="visually-hidden">Carregando...</span>
-            </Spinner>
-          </div>
+          <Loading />
         ) : (
           <Row>
             {threeEventos.map((evento, index) => {
