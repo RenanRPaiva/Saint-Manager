@@ -8,7 +8,7 @@ const menuItens = [
         text: 'Dashboard'
     },
     {
-        to: '/portal/cursos',
+        to: '/portal/eventos',
         text: 'Eventos'
     }
 ]
