@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { AdminAddEventoView } from "./views/AdminAddEvento";
+import { AdminEditEventoView } from "./views/AdminEditEvento";
 import { AdminEventosView } from "./views/AdminEventos";
 import { DashboardView } from "./views/Dashboard";
 import { EventoDetailView } from "./views/EventoDetail";
@@ -16,6 +17,7 @@ function App() {
       <Route path="/portal" element={<DashboardView />} />
       <Route path="/portal/eventos" element={<AdminEventosView />} />
       <Route path="/portal/eventos/add" element={<AdminAddEventoView />} />
+      <Route path="portal/eventos/:id" element={<AdminEditEventoView />} />
       <Route path="*" element={<NotFoundView />} />
     </Routes>
   );
