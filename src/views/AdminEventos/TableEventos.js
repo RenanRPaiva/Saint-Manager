@@ -1,7 +1,7 @@
 import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export function TableEventos({ eventos }) {
+export function TableEventos({ eventos, onClickDelete }) {
     return (
         <Table striped hover responsive>
             <thead>
@@ -24,7 +24,7 @@ export function TableEventos({ eventos }) {
                         <td>{evento.depart}</td>
                         <td className="d-grid gap-1 d-sm-table-cell">
                             <Button size="sm" as={Link} to={`/portal/eventos/${evento.id}`}>Editar</Button>
-                            <Button size="sm" variant="danger" className="ms-sm-1">Excluir</Button>
+                            <Button size="sm" variant="danger" className="ms-sm-1" onClick={() => onClickDelete(evento.id)}>Excluir</Button>
                         </td>
                     </tr>
                 ))}

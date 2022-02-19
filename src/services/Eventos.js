@@ -15,3 +15,12 @@ export const getEventos = async () => {
     }
     return await response.json()
 }
+
+export const deleteEvento = async (id) => {
+    const response = await fetch(`${apiUrl}/eventos/${id}`,{
+        method: 'DELETE'
+    })
+    if (!response.ok){
+        throw new Error('Response not OK.')
+    }
+}
