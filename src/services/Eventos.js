@@ -24,3 +24,16 @@ export const deleteEvento = async (id) => {
         throw new Error('Response not OK.')
     }
 }
+
+export const createEvento = async (eventoData) => {
+    const response = await fetch(`${apiUrl}/eventos`, {
+        method: 'POST',
+        body: JSON.stringify(eventoData),
+        headers: {
+            'Content-Type':'application/json'
+        }        
+    })
+    if (!response.ok) {
+        throw new Error('response not ok.')
+    }
+}
