@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import { LayoutPortal } from '../../components/LayoutPortal'
 import { Loading } from '../../components/Loading'
+import { ModalConfirm } from '../../components/ModalConfirm'
 import { PortalTitle } from '../../components/PortalTitle'
 import { deleteEvento, getEventos } from '../../services/Eventos'
 import { TableEventos } from './TableEventos'
@@ -21,11 +22,19 @@ export function AdminEventosView() {
     useEffect(() => {
         fetchEventos()
     }, [])
-    const handleDeleteEvento = async (id) => {
+    const [eventoToDelete, setEventoToDelete] = useState()
+    const openModal = (evento) => {
+        setEventoToDelete(evento)
+    }
+    const closeModal = () => {
+        setEventoToDelete(undefined)
+    }
+    const handleDeleteEvento = async () => {
         try {
-            await deleteEvento(id)
+            await deleteEvento(eventoToDelete.id)
             await fetchEventos()
             toast.success('Evento excluído com sucesso.')
+            closeModal()
         }catch {
             toast.error('Falha ao excluir evento. Tente novamente.')
         } 
@@ -36,8 +45,16 @@ export function AdminEventosView() {
             {loading ? (
                 <Loading />
             ) : (
-                <TableEventos eventos={eventos} onClickDelete={handleDeleteEvento} />
+                <TableEventos eventos={eventos} onClickDelete={openModal} />
             )}
+            <ModalConfirm 
+            show={!!eventoToDelete}
+            onConfirm={handleDeleteEvento} 
+            onHide={closeModal}
+            title='Deseja mesmo excluir?'
+            content={<p>Ao clicar em confirmar, o evento <strong>{eventoToDelete?.name}</strong> será excluído sem volta. Deseja realmente remover o evento?</p>}
+            confirmVariant='danger'
+            />
         </LayoutPortal>
     )
 }
