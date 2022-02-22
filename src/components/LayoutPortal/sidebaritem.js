@@ -2,9 +2,9 @@ import { Nav } from "react-bootstrap";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import styled from "styled-components";
 
-export function SidebarItem({ to, text }) {
+export function SidebarItem({ to, text, checkAllPath }) {
     const resolved = useResolvedPath(to)
-    const match = useMatch({ path: resolved.pathname })
+    const match = useMatch({ path: resolved.pathname, end: checkAllPath })
     return (
         <NavItemStyled>
             <Nav.Link as={Link} to={to} active={match} className='text-black'>

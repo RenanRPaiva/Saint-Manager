@@ -5,11 +5,13 @@ import { SidebarItem } from "./sidebaritem";
 const menuItens = [
     {
         to: '/portal',
-        text: 'Dashboard'
+        text: 'Dashboard',
+        checkAllPath: true
     },
     {
         to: '/portal/eventos',
-        text: 'Eventos'
+        text: 'Eventos',
+        checkAllPath:false
     }
 ]
 
@@ -21,7 +23,7 @@ export function Sidebar({ onClose, isOpen }) {
             <hr />
             <Nav variant='pills' className="flex-column">
                 {menuItens.map((item, index) => (
-                   <SidebarItem  key={index} to={item.to} text={item.text} />
+                   <SidebarItem  key={index} to={item.to} text={item.text} checkAllPath={item.checkAllPath} />
                 ))}                
             </Nav>
         </SidebarStyled>
