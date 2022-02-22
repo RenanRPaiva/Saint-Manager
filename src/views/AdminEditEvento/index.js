@@ -2,8 +2,8 @@ import { LayoutPortal } from '../../components/LayoutPortal'
 import { UpsertEvento } from '../../components/UpsertEvento'
 import { PortalTitle } from '../../components/PortalTitle'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { getEventoById } from '../../services/Eventos'
+import { useNavigate, useParams } from 'react-router-dom'
+import { getEventoById, updateEvento } from '../../services/Eventos'
 import { toast } from 'react-toastify'
 import { Loading } from '../../components/Loading'
 
@@ -41,11 +41,21 @@ export function AdminEditEventoView() {
         }
         fetchEvento()
     }, [id])
+    const navigate = useNavigate()
+    const handleSubmit = async (values) => {
+        try {
+            await updateEvento(id, values) 
+            toast.success('Evento atualizado com sucesso.')
+            navigate('/portal/eventos')
+        } catch {
+            toast.error('Falha ao atualizar evento. Tente novamente.')
+        }
+    }
     return (
         <LayoutPortal>
             <PortalTitle>Editar Evento</PortalTitle>
             {evento ? (
-                <UpsertEvento initialState={evento}/>
+                <UpsertEvento initialState={evento} buttonLabel='Alterar' onSubmit={handleSubmit}/>
             ) : (
                 <Loading />
             )}

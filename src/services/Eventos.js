@@ -37,3 +37,16 @@ export const createEvento = async (eventoData) => {
         throw new Error('response not ok.')
     }
 }
+
+export const updateEvento = async (id, eventoData) => {
+    const response = await fetch(`${apiUrl}/eventos/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(eventoData),
+        headers: {
+            'Content-Type':'application/json'
+        }
+    })
+    if (!response.ok) {
+        throw new Error('response not ok.')
+    }
+}
