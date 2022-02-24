@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { ListName } from "./ListName";
 
 const emptyState = {
     name: '',
     depart: '',
-    coord: '',
+    coord: [],
     shortDescription: '',
-    team: '',
+    team: [],
     date: '',
     time: '',
     local: '',
@@ -15,6 +16,8 @@ const emptyState = {
 
 export function UpsertEvento({ onSubmit, buttonLabel = 'Cadastrar', initialState = emptyState }) {
     const [formData, setFormData] = useState(initialState)
+    const [coordName, setCoordName] = useState('')
+    const [teamName, setTeamName] = useState('')
     const handleChange = (event) => {
         const { value, name } = event.target
         setFormData({
@@ -25,6 +28,52 @@ export function UpsertEvento({ onSubmit, buttonLabel = 'Cadastrar', initialState
     const handleSubmit = (event) => {
         event.preventDefault()
         onSubmit(formData)
+    }
+    const deleteCoord = (index) => {
+        let newListCoord = [
+            ...formData.coord,
+        ]
+        newListCoord.splice(index, 1)
+        setFormData({
+            ...formData,
+            coord: newListCoord
+        })
+    }
+    const deleteTeam = (index) => {
+        let newListTeam = [
+            ...formData.team
+        ]
+        newListTeam.splice(index,1)
+        setFormData({
+            ...formData,
+            team: newListTeam
+        })
+    }
+    const addButtonCoord = () => {
+        if (!!coordName) {
+
+            setFormData({
+                ...formData,
+                coord: [
+                    ...formData.coord,
+                    coordName
+                ]
+            })
+            setCoordName('')
+        }
+    }
+    const addButtonTeam = () => {
+        if (!!teamName) {
+
+            setFormData({
+                ...formData,
+                team: [
+                    ...formData.team,
+                    teamName
+                ]
+            })
+            setTeamName('')
+        }
     }
     return (
         <Form onSubmit={handleSubmit}>
@@ -66,28 +115,38 @@ export function UpsertEvento({ onSubmit, buttonLabel = 'Cadastrar', initialState
                 {formData.depart.length}/45 Max.
             </Form.Group>
             <Form.Group className="mb-3" controlId="evento-coord">
-                <Form.Label className="mb-0">Coordenador(a)</Form.Label>
+                <div className="d-flex d-colum gap-2" >
+                    <Form.Label className="mb-0 mt-2">Coordenador(a)</Form.Label>
+                    <Button className="mb-3" onClick={addButtonCoord}>Adicionar</Button>
+                </div>
                 <Form.Control
                     placeholder="Nome do coordenador(a) do departamento"
-                    required
-                    value={formData.coord}
-                    onChange={handleChange}
+                    value={coordName}
+                    onChange={(event) => {
+                        setCoordName(event.target.value)
+                    }}
                     name='coord'
                     maxLength={45}
                 />
-                {formData.coord.length}/45 Max.
+                {coordName.length}/45 Max.
+                <ListName list={formData.coord} handleDelete={deleteCoord} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="evento-team">
-                <Form.Label className="mb-0">Membros de equipe</Form.Label>
+                <div className="d-flex d-colum gap-2" >
+                    <Form.Label className="mb-0 mt-2">Membros de equipe</Form.Label>
+                    <Button className="mb-3" onClick={addButtonTeam}>Adicionar</Button>
+                </div>
                 <Form.Control
                     placeholder="Nome dos membros da equipe organizadora do evento"
-                    required
-                    value={formData.team}
-                    onChange={handleChange}
+                    value={teamName}
+                    onChange={(event) => {
+                        setTeamName(event.target.value)
+                    }}
                     name='team'
                     maxLength={45}
                 />
-                {formData.team.length}/45 Max.
+                {teamName.length}/45 Max.
+                <ListName list={formData.team} handleDelete={deleteTeam} />
             </Form.Group>
             <div className=" d-flex flex-colum gap-3">
                 <Form.Group className="mb-3" controlId="evento-date">
