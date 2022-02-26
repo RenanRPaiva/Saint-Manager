@@ -20,9 +20,9 @@ export function CardEventoDetail({ evento }) {
             <div>
                 <p className="text-center" ><u><b>Equipe Organizadora:</b></u></p>
                 <p className="text-center">Departamento: {evento.depart}</p>
-                <p className="text-center">Coordenador(a): {evento.coord}</p>
+                <p className="text-center">Coordenador(a): {evento.coord.join(', ')}</p>
                 <p className="text-center"><u><b>Equipe de Evento:</b></u></p>
-                <p className="text-center">{evento.team}</p>
+                <p className="text-center">{evento.team.join(', ')}</p>
             </div>
             <div>
                 <p className="text-center">Data: {evento.date} - {evento.time} - Local: {evento.local}</p>
