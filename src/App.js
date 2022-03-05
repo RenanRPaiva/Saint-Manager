@@ -6,6 +6,7 @@ import { DashboardView } from "./views/Dashboard";
 import { EventoDetailView } from "./views/EventoDetail";
 import { EventoView } from "./views/Eventos";
 import { HomeView } from "./views/Home";
+import { LoginView } from "./views/Login";
 import { NotFoundView } from "./views/NotFound";
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
       <Route path="/portal" element={<DashboardView />} />
       <Route path="/portal/eventos" element={<AdminEventosView />} />
       <Route path="/portal/eventos/add" element={<AdminAddEventoView />} />
-      <Route path="portal/eventos/:id" element={<AdminEditEventoView />} />
+      <Route path="/portal/eventos/:id" element={<AdminEditEventoView />} />
+      <Route path="/portal/login" element={<LoginView />} />
       <Route path="*" element={<NotFoundView />} />
     </Routes>
   );
