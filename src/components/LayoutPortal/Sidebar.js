@@ -1,28 +1,33 @@
 import { CloseButton, Nav } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { SidebarItem } from "./sidebaritem";
+import { selectUser } from "../../store/User/Selectors"
 
 const menuItens = [
     {
         to: '/portal',
         text: 'Dashboard',
-        checkAllPath: true
+        checkAllPath: true,
+        userTypes: [1, 2]
     },
     {
         to: '/portal/eventos',
         text: 'Eventos',
-        checkAllPath:false
+        checkAllPath:false,
+        userTypes: [1] 
     }
 ]
 
 export function Sidebar({ onClose, isOpen }) {
+    const user = useSelector(selectUser)
     return (
         <SidebarStyled isOpen={isOpen} className="d-flex flex-column p-3">
             <CloseButton className="ms-auto d-lg-none" onClick={onClose} />
             <p className="h1">Saint Manager</p>
             <hr />
             <Nav variant='pills' className="flex-column">
-                {menuItens.map((item, index) => (
+                {menuItens.filter(item => item.userTypes.includes(user.type)).map((item, index) => (
                    <SidebarItem  key={index} to={item.to} text={item.text} checkAllPath={item.checkAllPath} />
                 ))}                
             </Nav>
