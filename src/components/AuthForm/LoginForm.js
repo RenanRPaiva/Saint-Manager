@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { login } from "../../services/Users";
+import { userLogin } from "../../store/User/actions";
 
 
 export function LoginForm() {
@@ -25,12 +26,7 @@ export function LoginForm() {
         try {
             setIsSubmiting(true)
             const userData = await login(formData)
-            console.log('userData', userData)
-            const action = {
-                type: 'USER_LOGIN',
-                payload: userData
-            }
-            dispatch(action)
+            dispatch(userLogin(userData))
             navigate('/portal')
         } catch (error) {
             const message = error.message === 'Credentials invalid.'

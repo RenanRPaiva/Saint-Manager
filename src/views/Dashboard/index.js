@@ -4,8 +4,9 @@ import styled from "styled-components";
 import { PortalTitle } from "../../components/PortalTitle";
 import { Alert } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import { selectUser } from "../../store/User/Selectors";
 
-const selectUser = (state) => state
+
 
 export function DashboardView() {
     const user = useSelector(selectUser)

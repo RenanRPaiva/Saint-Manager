@@ -4,10 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Logo from '../../assets/img/Logo-saint-manager.png'
 import { logout } from "../../services/Users";
-
-const selectUser = (state) => {
-    return state
-}
+import { userLogout } from "../../store/User/actions";
+import { selectUser } from "../../store/User/Selectors";
 
 export function Topbar({ onOpen }) {
     const user = useSelector(selectUser)
@@ -16,10 +14,7 @@ export function Topbar({ onOpen }) {
     const navigate = useNavigate()
     const handleLogout = () => {
         logout()
-        const action = {
-            type: 'USER_LOGOUT'
-        }
-        dispatch(action)
+        dispatch(userLogout())
         navigate('/portal/login')
     }
     return (
