@@ -1,4 +1,5 @@
 import { apiUrl } from "./Api"
+import { setStorageItem } from "./Storage"
 
 export const login = async (credentialsData) => {
     const response = await fetch(`${apiUrl}/login`, {
@@ -8,11 +9,16 @@ export const login = async (credentialsData) => {
             'Content-Type':'application/json'
         }        
     })
+    const data = await response.json()
     if (!response.ok) {
-        const error = await response.json()
-        const message = error === 'incorrect password' || error === 'Cannot find user'
+        const message = data === 'incorrect password' || data === 'Cannot find user'
         ? 'Credentials invalid.'
         : 'response not ok.'
         throw new Error(message)
     }
+    const userData = {
+        accessToken: data.accessToken,
+        ...data.user
+    }
+    setStorageItem('user', JSON.stringify(userData))
 }
