@@ -1,4 +1,4 @@
-import { apiUrl } from "./Api"
+import { apiUrl, getAuthorizationHeader } from "./Api"
 
 export const getEventoById = async (id) => {
     const response = await fetch(`${apiUrl}/eventos/${id}?_embed=inscriptions`)
@@ -18,7 +18,8 @@ export const getEventos = async () => {
 
 export const deleteEvento = async (id) => {
     const response = await fetch(`${apiUrl}/eventos/${id}`,{
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: getAuthorizationHeader()
     })
     if (!response.ok){
         throw new Error('Response not OK.')
@@ -30,7 +31,8 @@ export const createEvento = async (eventoData) => {
         method: 'POST',
         body: JSON.stringify(eventoData),
         headers: {
-            'Content-Type':'application/json'
+            'Content-Type':'application/json',
+            ...getAuthorizationHeader()
         }        
     })
     if (!response.ok) {
@@ -43,7 +45,8 @@ export const updateEvento = async (id, eventoData) => {
         method: 'PUT',
         body: JSON.stringify(eventoData),
         headers: {
-            'Content-Type':'application/json'
+            'Content-Type':'application/json',
+            ...getAuthorizationHeader()
         }
     })
     if (!response.ok) {
