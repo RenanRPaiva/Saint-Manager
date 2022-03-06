@@ -16,6 +16,12 @@ const menuItens = [
         text: 'Eventos',
         checkAllPath:false,
         userTypes: [1] 
+    },
+    {
+        to: '/',
+        text: 'Ir para o site',
+        checkAllPath: true,
+        userTypes: [2]
     }
 ]
 
