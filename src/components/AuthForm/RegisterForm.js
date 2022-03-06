@@ -49,7 +49,7 @@ export function RegisterForm({ eventoId, onRegister }) {
                 <Alert variant="success">Inscrito com sucesso!</Alert>
             )}
             <Form onSubmit={handleSubmit} className='mb-4'>
-                <Form.Group className="mb-3" controlId="inscription-name">
+                <Form.Group className="mb-3" controlId="register-name">
                     <Form.Label className="mb-0">Nome</Form.Label>
                     <Form.Control
                         type="text"
@@ -61,7 +61,7 @@ export function RegisterForm({ eventoId, onRegister }) {
                         className="opacity-75"
                     />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="inscription-email">
+                <Form.Group className="mb-3" controlId="register-email">
                     <Form.Label className="mb-0">E-mail</Form.Label>
                     <Form.Control
                         type="email"
