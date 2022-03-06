@@ -1,9 +1,27 @@
 import { Container, Dropdown, Nav, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Logo from '../../assets/img/Logo-saint-manager.png'
+import { logout } from "../../services/Users";
+
+const selectUser = (state) => {
+    return state
+}
 
 export function Topbar({ onOpen }) {
+    const user = useSelector(selectUser)
+    console.log('user', user)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const handleLogout = () => {
+        logout()
+        const action = {
+            type: 'USER_LOGOUT'
+        }
+        dispatch(action)
+        navigate('/portal/login')
+    }
     return (
         <NavbarStyled expand="lg">
             <Container fluid>
@@ -14,10 +32,10 @@ export function Topbar({ onOpen }) {
                 <Nav>
                     <Dropdown align="end">
                         <Dropdown.Toggle variant="ligth"> 
-                            Renan
+                            {user.name}
                         </Dropdown.Toggle>
                         <Menu>
-                            <Dropdown.Item>Sair</Dropdown.Item>
+                            <Dropdown.Item onClick={handleLogout}>Sair</Dropdown.Item>
                         </Menu>
                     </Dropdown>
                 </Nav>

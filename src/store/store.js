@@ -1,6 +1,20 @@
 import { createStore } from "redux";
+import { getStorageItem } from "../services/Storage";
 
-const reducer = (state, action ) => {}
+const user = JSON.parse(getStorageItem('user')) 
+
+const reducer = (state, action ) => {
+    if (action.type === '@@INIT'){
+        return user || null
+    }
+    if (action.type === 'USER_LOGIN'){
+        return action.payload
+    }
+    if (action.type === 'USER_LOGOUT'){
+        return null
+    }
+    return state
+}
 
 export const store = createStore(
     reducer,

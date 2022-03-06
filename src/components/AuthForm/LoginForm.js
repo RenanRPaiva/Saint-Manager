@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { login } from "../../services/Users";
 
@@ -16,11 +18,20 @@ export function LoginForm() {
         newFormData[name] = event.target.value
         setFormData(newFormData)
     }
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const handleSubmit = async (event) => {
         event.preventDefault()
         try {
             setIsSubmiting(true)
-            await login(formData)
+            const userData = await login(formData)
+            console.log('userData', userData)
+            const action = {
+                type: 'USER_LOGIN',
+                payload: userData
+            }
+            dispatch(action)
+            navigate('/portal')
         } catch (error) {
             const message = error.message === 'Credentials invalid.'
             ? 'E-mail ou senha inválidos.'
