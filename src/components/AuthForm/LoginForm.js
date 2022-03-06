@@ -37,8 +37,8 @@ export function LoginForm() {
             ? 'E-mail ou senha inválidos.'
             : 'Falha ao fazer login. Tente Novamente.'
             toast.error(message)
+            setIsSubmiting(false)
         }
-        setIsSubmiting(false)
     }
     return (
         <>

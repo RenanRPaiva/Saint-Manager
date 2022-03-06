@@ -3,16 +3,23 @@ import LogoT from '../../assets/img/Logo-saint-manager-transp.png'
 import styled from "styled-components";
 import { PortalTitle } from "../../components/PortalTitle";
 import { Alert } from "react-bootstrap";
+import { useSelector } from "react-redux";
+
+const selectUser = (state) => state
 
 export function DashboardView() {
+    const user = useSelector(selectUser)
     return (
         <LayoutPortal>
             <DivStyled>
-                <PortalTitle>Bem vindo(a) Renan!</PortalTitle>
-                <p>Utilize o menu lateral para gerenciar Saint Manager.</p>
-                <Alert variant="info" className="opacity-75">Você também recebe um e-mail confimando a inscrição no evento.</Alert>
+                <PortalTitle>Bem vindo(a) {user.name}</PortalTitle>
+                {user.type === 1 ? (
+                    <p> Utilize o menu lateral para gerenciar Saint Manager.</p>
+                ) : (
+                    <Alert variant="info" className="opacity-75">Você também recebe um e-mail confimando a inscrição no evento.</Alert>
+                )}
             </DivStyled>
-        </LayoutPortal>
+        </LayoutPortal >
     )
 }
 
