@@ -9,7 +9,6 @@ import { selectUser } from "../../store/User/Selectors";
 
 export function Topbar({ onOpen }) {
     const user = useSelector(selectUser)
-    console.log('user', user)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const handleLogout = () => {
