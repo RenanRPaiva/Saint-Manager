@@ -1,53 +1,50 @@
 import { useState } from "react";
-import { Button, Col, Form, Row, Alert } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import styled from "styled-components";
+import { createUser } from "../../services/Users";
+import { userLogin } from "../../store/User/actions";
 
-const initialValue = {
-    name: '',
-    email: '',
-    password: ''
-}
-export function RegisterForm({ eventoId, onRegister }) {
-    const [generalError, setGeneralError] = useState()
+export function RegisterForm() {
     const [isSubmiting, setIsSubmiting] = useState(false)
-    const [showSuccess, setShowSuccess] = useState(false)
-    const [formData, setFormData] = useState(initialValue)
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        password: ''
+    })
     const handleChange = (event) => {
         const newFormData = { ...formData }
         const name = event.target.name
         newFormData[name] = event.target.value
         setFormData(newFormData)
     }
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const handleSubmit = async (event) => {
-
         try {
             event.preventDefault()
             setIsSubmiting(true)
-            setGeneralError(undefined)
-            setShowSuccess(false)
-            // const inscriptionData = {
-            //     ...formData,
-            //     eventoId: parseInt(eventoId)
-            // }
-            // await createInscription(inscriptionData)
-            setShowSuccess(true)
-            setFormData(initialValue)
-            onRegister()
-        } catch {
-            setGeneralError('Falha ao realizar inscrição. Tente novamente!')
+            const userData = {
+                ...formData
+            }
+           const createdUserData = await createUser(userData)
+           const action = userLogin(createdUserData)
+           dispatch(action)
+           navigate('/portal')
+        } catch (error) {
+            if (error.message === 'Email already exists') {
+                toast.error('Este e-mail já está em uso.')
+            } else {
+                toast.error('Falha ao se cadastrar. Tente novamente!')
+            }
+            setIsSubmiting(false)
         }
-        setIsSubmiting(false)
-
     }
     return (
         <>
             <h2>Cadastre-se:</h2>
-            {generalError && (
-                <Alert variant="danger">{generalError}</Alert>
-            )}
-            {showSuccess && (
-                <Alert variant="success">Inscrito com sucesso!</Alert>
-            )}
             <Form onSubmit={handleSubmit} className='mb-4'>
                 <Form.Group className="mb-3" controlId="register-name">
                     <Form.Label className="mb-0">Nome</Form.Label>
@@ -83,6 +80,7 @@ export function RegisterForm({ eventoId, onRegister }) {
                         value={formData.password}
                         onChange={handleChange}
                         className="opacity-75"
+                        minLength={4}
                     />
                 </Form.Group>
                 <Row>
