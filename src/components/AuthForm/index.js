@@ -3,17 +3,17 @@ import { LoginForm } from "./LoginForm";
 import { RegisterForm } from "./RegisterForm";
 import styled from "styled-components"
 
-export function AuthForm () {
+export function AuthForm ( {redirectAfterLogin = true} ) {
     return (
         <Row>
             <Col xs={12} lg='auto' className="flex-fill">
-            <LoginForm />
+            <LoginForm redirectAfterLogin={redirectAfterLogin} />
             </Col>
             <Divider xs={12} lg='auto' className='text-center my-3 align-self-center'>
             ou
             </Divider>
             <Col xs={12} lg='auto' className="flex-fill">
-            <RegisterForm />
+            <RegisterForm redirectAfterLogin={redirectAfterLogin} />
             </Col>
         </Row>
     )

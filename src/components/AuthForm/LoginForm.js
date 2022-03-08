@@ -7,7 +7,7 @@ import { login } from "../../services/Users";
 import { userLogin } from "../../store/User/actions";
 
 
-export function LoginForm() {
+export function LoginForm( {redirectAfterLogin} ) {
     const [isSubmiting, setIsSubmiting] = useState(false)
     const [formData, setFormData] = useState({
         email: '',
@@ -27,7 +27,9 @@ export function LoginForm() {
             setIsSubmiting(true)
             const userData = await login(formData)
             dispatch(userLogin(userData))
-            navigate('/portal')
+            if (redirectAfterLogin){
+                navigate('/portal')
+            }
         } catch (error) {
             const message = error.message === 'Credentials invalid.'
             ? 'E-mail ou senha inválidos.'

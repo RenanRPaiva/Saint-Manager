@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { createUser } from "../../services/Users";
 import { userLogin } from "../../store/User/actions";
 
-export function RegisterForm() {
+export function RegisterForm({ redirectAfterLogin }) {
     const [isSubmiting, setIsSubmiting] = useState(false)
     const [formData, setFormData] = useState({
         name: '',
@@ -32,7 +32,9 @@ export function RegisterForm() {
            const createdUserData = await createUser(userData)
            const action = userLogin(createdUserData)
            dispatch(action)
-           navigate('/portal')
+           if (redirectAfterLogin){
+               navigate('/portal')
+           }
         } catch (error) {
             if (error.message === 'Email already exists') {
                 toast.error('Este e-mail já está em uso.')
