@@ -1,5 +1,5 @@
 import { Layout } from "../../components/Layout";
-import { Alert, Container, Spinner } from "react-bootstrap";
+import { Alert, Container } from "react-bootstrap";
 import { CardEventoDetail } from "./cardEventoDetail";
 import { Inscritos } from "./inscritos";
 import { InscritoForm } from "./inscritoform";
@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
 import { NotFoundView } from "../NotFound";
 import { getEventoById } from "../../services/Eventos";
+import { Loading } from "../../components/Loading";
 
 export function EventoDetailView() {
     const { id } = useParams()
@@ -36,11 +37,7 @@ export function EventoDetailView() {
     }
     if (loading) {
         return (
-            <div className="text-center mt-5">
-                <Spinner animation="border" role="status" variant="warning">
-                    <span className="visually-hidden">Carregando...</span>
-                </Spinner>
-            </div>
+            <Loading />
         )
     }
     if (generalError === '404') {
@@ -53,7 +50,7 @@ export function EventoDetailView() {
                     <Alert variant="danger" className="mt-4">{generalError}</Alert>) : (
                     <>
                         <CardEventoDetail evento={evento} />
-                        <InscritoForm eventoId={id} onRegister={handleOnRegister} />
+                        <InscritoForm eventoId={id} onRegister={handleOnRegister}  listInscriptions={evento.inscriptions} />
                         <Inscritos inscriptions={evento.inscriptions} />
                     </>
                 )}

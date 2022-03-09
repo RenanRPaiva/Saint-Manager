@@ -1,9 +1,10 @@
-import { Alert, Col, Container, Row, Spinner } from "react-bootstrap";
+import { Alert, Col, Container, Row } from "react-bootstrap";
 import { CardCustom } from "../../components/CardEvento";
 import { Layout } from "../../components/Layout";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getEventos } from "../../services/Eventos";
+import { Loading } from "../../components/Loading";
 
 export function EventoView() {
     const navigate = useNavigate()
@@ -33,11 +34,7 @@ export function EventoView() {
                     <Alert variant="danger">{generalError}</Alert>
                 )}
                 {loading ? (
-                    <div className="text-center">
-                        <Spinner animation="border" role="status" variant="warning">
-                            <span className="visually-hidden">Carregando...</span>
-                        </Spinner>
-                    </div>
+                    <Loading />
                 ) : (
                     <Row>
                         {eventos.map((evento, index) => (
