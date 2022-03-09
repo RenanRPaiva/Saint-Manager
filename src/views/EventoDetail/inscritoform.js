@@ -25,7 +25,7 @@ export function InscritoForm({ eventoId, onRegister, listInscriptions }) {
         }
         setIsSubmiting(false)
     }
-    const inscrito = listInscriptions?.some(item => item.userId === user.id) || false
+    const inscrito = listInscriptions?.some(item => item.userId === user?.id) || false
     return (
         <>
             <h2>Inscreva-se:</h2>
