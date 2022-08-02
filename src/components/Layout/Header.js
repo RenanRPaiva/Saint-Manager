@@ -1,5 +1,5 @@
 import { Navbar, Container, Nav } from "react-bootstrap"
-import Logo from '../../assets/img/Logo-saint-manager.png'
+import Logo from '../../assets/img/Logo2.png'
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 import { useSelector } from "react-redux"
@@ -12,7 +12,7 @@ export function Header() {
             <NavbarStyled expand="lg">
                 <Container>
                     <Navbar.Brand as={Link} to="/">
-                        <img src={Logo} alt="Logo Saint Manager" width={46.58} height={46.58} />
+                        <img src={Logo} alt="Logo Saint Manager" width={70} height={70} />
                     </Navbar.Brand>
                     <NavbarTogglerStyled aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">

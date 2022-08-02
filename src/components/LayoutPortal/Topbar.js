@@ -2,7 +2,7 @@ import { Container, Dropdown, Nav, Navbar } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Logo from '../../assets/img/Logo-saint-manager.png'
+import Logo from '../../assets/img/Logo2.png'
 import { logout } from "../../services/Users";
 import { userLogout } from "../../store/User/actions";
 import { selectUser } from "../../store/User/Selectors";
@@ -21,7 +21,7 @@ export function Topbar({ onOpen }) {
             <Container fluid>
                 <Navbar.Toggle onClick={onOpen} />
                 <Navbar.Brand as={Link} to="/portal">
-                    <img src={Logo} alt="Logo Saint Manager" width={46.58} height={46.58} />
+                    <img src={Logo} alt="Logo Saint Manager" width={70} height={70} />
                 </Navbar.Brand>
                 <Nav>
                     <Dropdown align="end">
